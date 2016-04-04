@@ -13,6 +13,7 @@ public class Usuario {
     boolean logged;
 
     public Usuario(){
+        tipo = "Director";
         logged=false;
     }
 

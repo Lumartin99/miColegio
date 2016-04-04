@@ -55,7 +55,7 @@ public class Signup extends AsyncTask<String, Void, String> {
             data += "&password=" + URLEncoder.encode(password, "UTF-8");
             data += "&type=" + URLEncoder.encode(type, "UTF-8");
 
-            link = "http://192.168.1.34/signup.php";
+            link = "http://micolegio.no-ip.org/signup.php";
             URL url = new URL(link);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
