@@ -9,15 +9,26 @@
             android:id="@+id/nav_alumnos"
             android:title="Alumnos" />
         <item
+            android:id="@+id/nav_profesores"
+            android:title="Profesores" />
+        <item
             android:id="@+id/nav_citas"
             android:title="Citas" />
         <item
             android:id="@+id/nav_mensajes"
             android:icon="@android:drawable/ic_menu_send"
             android:title="Mensajes" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/menuBot">
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
             android:title="Opciones" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="Logout" />
     </group>
 </menu>

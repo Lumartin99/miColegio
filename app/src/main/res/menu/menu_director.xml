@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/menuTop">
         <item
             android:id="@+id/nav_alertas"
             android:icon="@android:drawable/ic_dialog_alert"
@@ -19,10 +20,18 @@
             android:id="@+id/nav_mensajes"
             android:icon="@android:drawable/ic_menu_send"
             android:title="Mensajes" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Opciones" />
-    </group>
 
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/menuBot">
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Opciones" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_menu_logout"
+        android:title="Logout" />
+    </group>
 </menu>
