@@ -60,11 +60,12 @@ public class Login extends AsyncTask<String, Void, String> {
             result = bufferedReader.readLine();
             bufferedReader.close();
             con.disconnect();
+            return result;
 
         } catch (Exception e) {
             return new String("Exception: " + e.getMessage());
         }
-
+/*
         try {
             JSONObject jsonResult = new JSONObject(result);
             JSONArray resultados = jsonResult.getJSONArray("result");
@@ -88,7 +89,7 @@ public class Login extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
-        return result;
+        return result;*/
     }
 
     @Override

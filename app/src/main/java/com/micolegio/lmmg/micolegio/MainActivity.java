@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Intentando entrar....", Toast.LENGTH_SHORT).show();
 
         result = usuario.login(un, pw);
+        ComunicadorUsuario.setUsuario(usuario);
 
         if (result.equalsIgnoreCase("OK")) {
             Toast.makeText(this, "Usuario Logeado", Toast.LENGTH_SHORT).show();

@@ -32,8 +32,9 @@ public class MenuprincipalActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         usuario = new Usuario();
-        usuario.setNombre(getIntent().getStringExtra("usuario"));
+        usuario = ComunicadorUsuario.getUsuario();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
