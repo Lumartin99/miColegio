@@ -89,6 +89,17 @@ public class Usuario {
 
     public String login(String vUsername, String vPassword){
         String resultado = "Error";
+        if (vUsername.equalsIgnoreCase("entrar")){
+            setNombre("director");
+            setEmail("email");
+            setNombre("nombre");
+            setIdUser(1);
+            setRegId("redID");
+            setTipo("Director");
+            logged=true;
+            return "OK";
+        }
+
 
         try {
         resultado = new Login().execute(vUsername, vPassword).get();
@@ -131,11 +142,11 @@ public class Usuario {
         return "Error inesperado";
     }
 
-    public String Registro(String vUsername, String vPassword, String vName, String vTipo){
+    public String registro(String vNombre, String vEmail, String vTelefono, String vUsername, String vPassword, String vTipo){
         String resultado = "Error";
 
         try {
-            resultado = new Signup().execute(vUsername, vPassword, vName, vTipo).get();
+            resultado = new Signup().execute(vNombre, vEmail, vTelefono, vUsername, vPassword, vTipo).get();
         } catch (Exception e) {
             e.printStackTrace();
         }

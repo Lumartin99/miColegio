@@ -38,10 +38,14 @@ public class Signup extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... arg0) {
-        String username = arg0[0];
-        String password = arg0[1];
-        String name = arg0[2];
-        String type = arg0[3];
+        String name = arg0[0];
+        String email = arg0[1];
+        String telefono = arg0[2];
+        String username = arg0[3];
+        String password = arg0[4];
+        String type = arg0[5];
+
+
 
         String link;
         String data;
@@ -50,8 +54,10 @@ public class Signup extends AsyncTask<String, Void, String> {
 
 
         try {
-            data = "&username=" + URLEncoder.encode(username, "UTF-8");
-            data += "&name=" + URLEncoder.encode(name, "UTF-8");
+            data = "&name=" + URLEncoder.encode(username, "UTF-8");
+            data += "&email=" + URLEncoder.encode(name, "UTF-8");
+            data += "&telefono=" + URLEncoder.encode(password, "UTF-8");
+            data += "&username=" + URLEncoder.encode(type, "UTF-8");
             data += "&password=" + URLEncoder.encode(password, "UTF-8");
             data += "&type=" + URLEncoder.encode(type, "UTF-8");
 

@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreacionProfesor extends AppCompatActivity {
+public class CreacionAlumno extends AppCompatActivity {
     private EditText nombre;
     private EditText email;
     private EditText telefono;
@@ -17,10 +17,11 @@ public class CreacionProfesor extends AppCompatActivity {
     private EditText pass2;
     private Usuario usuario;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creacion_profesor);
+        setContentView(R.layout.activity_creacion_padre);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,14 +60,14 @@ public class CreacionProfesor extends AppCompatActivity {
     public void crear(View v) {
         String result = "";
 
-        Toast.makeText(this, "Registrando nuevo profesor....", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registrando nuevo alumno....", Toast.LENGTH_SHORT).show();
 
         if (pass1.getText().toString().equals(pass2.getText().toString())) {
 
-            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Profesor");
+            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Alumno");
 
             if (result.equalsIgnoreCase("OK")) {
-                Toast.makeText(this, "Nuevo profesor registrado correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nuevo alumno registrado correctamente", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             } else {
                 Toast.makeText(this, result, Toast.LENGTH_SHORT).show();

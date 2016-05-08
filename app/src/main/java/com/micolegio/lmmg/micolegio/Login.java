@@ -65,57 +65,10 @@ public class Login extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             return new String("Exception: " + e.getMessage());
         }
-/*
-        try {
-            JSONObject jsonResult = new JSONObject(result);
-            JSONArray resultados = jsonResult.getJSONArray("result");
-
-            if (resultados.length()==0){
-                result="Usuario incorrecto";
-            }
-            for (int i = 0; i < resultados.length(); i++){
-                JSONObject fila = resultados.getJSONObject(i);
-                String username_bd = fila.getString("username");
-                String password_bd = fila.getString("password");
-                if (password.equals(password_bd)) {
-                    result="OK";
-                }
-                else {
-                    result="Password incorrecto";
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return result;*/
     }
 
     @Override
     protected void onPostExecute(String result) {
-/*
-        try {
-            JSONObject jsonResult = new JSONObject(result);
-            JSONArray resultados = jsonResult.getJSONArray("result");
-
-            for (int i = 0; i < resultados.length(); i++){
-                JSONObject fila = resultados.getJSONObject(i);
-                String username_bd = fila.getString("username");
-                String password_bd = fila.getString("password");
-                if (password.equals(password_bd)) {
-                    //Toast.makeText(context, "Login correto....", Toast.LENGTH_SHORT).show();
-                    result="OK";
-                }
-                else {
-                    //Toast.makeText(context, "Password incorrecto....", Toast.LENGTH_SHORT).show();
-                    result="NOK";
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
         super.onPostExecute(result);
 
     }

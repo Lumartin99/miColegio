@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.micolegio.lmmg.micolegio.CreacionProfesor">
+    tools:context="com.micolegio.lmmg.micolegio.CreacionPadre">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -32,8 +32,8 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:background="@color/fondo"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.micolegio.lmmg.micolegio.CreacionProfesor"
-        tools:showIn="@layout/activity_creacion_profesor"
+        tools:context="com.micolegio.lmmg.micolegio.CreacionPadre"
+        tools:showIn="@layout/activity_creacion_padre"
         android:orientation="vertical"
         android:onClick="cierraTeclado">
 
@@ -47,13 +47,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
-            android:id="@+id/eNombre" />
+            android:id="@+id/eNombre"
+            android:layout_below="@+id/tNombre" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
             android:id="@+id/tEmail"
+            android:layout_below="@+id/eNombre"
             android:layout_marginTop="10dp" />
 
         <EditText
@@ -86,18 +88,13 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
-            android:id="@+id/eUsuario"
-            android:layout_below="@+id/tUsuario"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true" />
+            android:id="@+id/eUsuario" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contraseña"
             android:id="@+id/tPass1"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
             android:layout_marginTop="10dp" />
 
         <EditText
@@ -106,16 +103,13 @@
             android:background="@drawable/rounded_corner"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/ePass1"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/ePass1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Repite contraseña"
             android:id="@+id/tPass2"
-            android:layout_above="@+id/ePass1"
-            android:layout_alignParentStart="true"
             android:layout_marginTop="10dp" />
 
         <EditText
@@ -124,9 +118,7 @@
             android:background="@drawable/rounded_corner"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/ePass2"
-            android:layout_below="@+id/tPass1"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/ePass2" />
 
         <Button
             style="?android:attr/buttonStyleSmall"

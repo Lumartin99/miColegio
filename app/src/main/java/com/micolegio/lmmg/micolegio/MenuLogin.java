@@ -24,7 +24,7 @@ import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MenuLogin extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (result.equalsIgnoreCase("OK")) {
             Toast.makeText(this, "Usuario Logeado", Toast.LENGTH_SHORT).show();
-            Intent startIntent = new Intent(MainActivity.this, MenuprincipalActivity.class);
+            Intent startIntent = new Intent(MenuLogin.this, MenuPrincipal.class);
             startIntent.putExtra("usuario", usuario.getNombre());
             startActivity(startIntent);
             overridePendingTransition(R.transition.left_in, R.transition.left_out);
