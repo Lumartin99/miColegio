@@ -54,10 +54,10 @@ public class Signup extends AsyncTask<String, Void, String> {
 
 
         try {
-            data = "&name=" + URLEncoder.encode(username, "UTF-8");
-            data += "&email=" + URLEncoder.encode(name, "UTF-8");
-            data += "&telefono=" + URLEncoder.encode(password, "UTF-8");
-            data += "&username=" + URLEncoder.encode(type, "UTF-8");
+            data = "&name=" + URLEncoder.encode(name, "UTF-8");
+            data += "&email=" + URLEncoder.encode(email, "UTF-8");
+            data += "&phone=" + URLEncoder.encode(telefono, "UTF-8");
+            data += "&username=" + URLEncoder.encode(username, "UTF-8");
             data += "&password=" + URLEncoder.encode(password, "UTF-8");
             data += "&type=" + URLEncoder.encode(type, "UTF-8");
 
