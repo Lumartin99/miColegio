@@ -32,13 +32,7 @@ public class ModificarAlumno extends AppCompatActivity {
             }
         });
 
-        nombre = (EditText) findViewById(R.id.eNombre);
-        email = (EditText) findViewById(R.id.eEmail);
-        telefono = (EditText) findViewById(R.id.eTelefono);
-        username = (EditText) findViewById(R.id.eUsuario);
-        pass1 = (EditText) findViewById(R.id.ePass1);
-        pass2 = (EditText) findViewById(R.id.ePass2);
-        usuario = new Usuario();
+
 
     }
 
@@ -56,25 +50,4 @@ public class ModificarAlumno extends AppCompatActivity {
     }
 
 
-    public void modificar(View v) {
-        String result = "";
-
-        Toast.makeText(this, "Registrando nuevo padre....", Toast.LENGTH_SHORT).show();
-
-        if (pass1.getText().toString().equals(pass2.getText().toString())) {
-
-            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Profesor");
-
-            if (result.equalsIgnoreCase("OK")) {
-                Toast.makeText(this, "Nuevo padre registrado correctamente", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            } else {
-                Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(this, "Los password no coinciden....", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 }

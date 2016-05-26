@@ -3,20 +3,24 @@ package com.micolegio.lmmg.micolegio;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.app.SearchManager;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
-public class ModificarPofesor extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private EditText nombre;
-    private EditText email;
-    private EditText telefono;
-    private EditText username;
-    private EditText pass1;
-    private EditText pass2;
-    private Usuario usuario;
+public class ModificarPofesor extends AppCompatActivity implements SearchView.OnQueryTextListener {
+
+    private SearchView mSearchView;
+    private ListView lista;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +36,48 @@ public class ModificarPofesor extends AppCompatActivity {
             }
         });
 
-        nombre = (EditText) findViewById(R.id.eNombre);
-        email = (EditText) findViewById(R.id.eEmail);
-        telefono = (EditText) findViewById(R.id.eTelefono);
-        username = (EditText) findViewById(R.id.eUsuario);
-        pass1 = (EditText) findViewById(R.id.ePass1);
-        pass2 = (EditText) findViewById(R.id.ePass2);
-        usuario = new Usuario();
+        mSearchView = (SearchView) findViewById(R.id.searchView);
 
+        ArrayList<Usuario> profesores = new ArrayList<Usuario>();
+
+        profesores.add(new Usuario(0,"pepe","pepe","650565595","profesor","","pepe@gmail.com"));
+        profesores.add(new Usuario(1,"juan","juan","650565595","profesor","","pepe@gmail.com"));
+        profesores.add(new Usuario(2,"pablo","pablo","650565595","profesor","","pepe@gmail.com"));
+        profesores.add(new Usuario(3,"pedro","pedro","650565595","profesor","","pepe@gmail.com"));
+
+        ListView lista = (ListView) findViewById(R.id.listViewProfesores);
+        lista.setAdapter(new Adaptador_lista(this, R.layout.e_profesor, profesores){
+            @Override
+            public void onEntrada(Object entrada, View view) {
+                if (entrada != null) {
+                    TextView nombre = (TextView) view.findViewById(R.id.nombreProfesor);
+                    if (nombre != null)
+                        nombre.setText(((Usuario) entrada).getNombre());
+                }
+            }
+        });
+
+        mSearchView.setIconifiedByDefault(false);
+        mSearchView.setOnQueryTextListener(this);
+        mSearchView.setSubmitButtonEnabled(true);
+        mSearchView.setQueryHint("Buscar Profesor");
+
+        lista.setTextFilterEnabled(true);
     }
+
+    public boolean onQueryTextChange(String newText) {
+        if (TextUtils.isEmpty(newText)) {
+            lista.clearTextFilter();
+        } else {
+            lista.setFilterText(newText.toString());
+        }
+        return true;
+    }
+
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -56,25 +93,4 @@ public class ModificarPofesor extends AppCompatActivity {
     }
 
 
-    public void modificar(View v) {
-        String result = "";
-
-        Toast.makeText(this, "Registrando nuevo profesor....", Toast.LENGTH_SHORT).show();
-
-        if (pass1.getText().toString().equals(pass2.getText().toString())) {
-
-            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Profesor");
-
-            if (result.equalsIgnoreCase("OK")) {
-                Toast.makeText(this, "Nuevo profesor registrado correctamente", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            } else {
-                Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(this, "Los password no coinciden....", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 }

@@ -19,6 +19,15 @@ public class Usuario {
     String email;
     boolean logged;
 
+    public Usuario(int id_aux, String username_aux, String nombre_aux, String telefono_aux, String tipo_aux, String regId_aux, String email_aux){
+        username = username_aux;
+        nombre = nombre_aux;
+        telefono = telefono_aux;
+        tipo = tipo_aux;
+        regId = regId_aux;
+        email = email_aux;
+    }
+
     public Usuario(){
         logged=false;
     }
