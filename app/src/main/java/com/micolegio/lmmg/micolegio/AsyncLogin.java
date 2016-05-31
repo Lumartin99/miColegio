@@ -1,16 +1,7 @@
 package com.micolegio.lmmg.micolegio;
 
 
-import android.net.http.HttpResponseCache;
 import android.os.AsyncTask;
-
-import android.content.Context;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -18,15 +9,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- * Created by LuisMaria on 29/03/2016.
- */
-public class Login extends AsyncTask<String, Void, String> {
+
+public class AsyncLogin extends AsyncTask<String, Void, String> {
 
     private String username;
     private String password;
 
-    public Login() {
+    public AsyncLogin() {
     }
 
     @Override

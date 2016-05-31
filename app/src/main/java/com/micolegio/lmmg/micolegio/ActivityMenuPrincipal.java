@@ -27,8 +27,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MenuPrincipal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PadresFragment.OnFragmentInteractionListener, ProfesoresFragment.OnFragmentInteractionListener, AlumnosFragment.OnFragmentInteractionListener {
+public class ActivityMenuPrincipal extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentPadres.OnFragmentInteractionListener, FragmentProfesores.OnFragmentInteractionListener, FragmentAlumnos.OnFragmentInteractionListener {
 
     private EditText username;
     private EditText password;
@@ -96,37 +96,40 @@ public class MenuPrincipal extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment = null;
-        Class fragmentClass = ProfesoresFragment.class;
-
+        /*Fragment fragment = null;
+        Class fragmentClass = FragmentProfesores.class;
+*/
         switch(item.getItemId()){
             case R.id.nav_profesores:
-                fragmentClass = ProfesoresFragment.class;
+                //fragmentClass = FragmentProfesores.class;
+                Intent profesores = new Intent(ActivityMenuPrincipal.this, ActivityProfesores.class);
+                startActivity(profesores);
+                overridePendingTransition(R.transition.left_in, R.transition.left_out);
                 break;
             case R.id.nav_padres:
-                fragmentClass = PadresFragment.class;
+                //fragmentClass = FragmentPadres.class;
                 break;
             case R.id.nav_alumnos:
-                fragmentClass = AlumnosFragment.class;
+                //fragmentClass = FragmentAlumnos.class;
                 break;
             case R.id.nav_logout:
                 salir();
                 break;
             default:
-                fragmentClass = ProfesoresFragment.class;
+                //fragmentClass = FragmentProfesores.class;
         }
 
-        try {
+        /*try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
         // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.contenido_principal, fragment).commit();
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+*/
         return true;
     }
 
@@ -159,37 +162,37 @@ public class MenuPrincipal extends AppCompatActivity
     }
 
     public void crearProfesor(View v){
-        Intent creaProfesores = new Intent(MenuPrincipal.this, CreacionProfesor.class);
+        Intent creaProfesores = new Intent(ActivityMenuPrincipal.this, ActivityCreacionProfesor.class);
         startActivity(creaProfesores);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }
 
     public void modificarProfesor(View v){
-        Intent modificaProfesores = new Intent(MenuPrincipal.this, ModificarPofesor.class);
+        Intent modificaProfesores = new Intent(ActivityMenuPrincipal.this, ActivityModificarProfesor.class);
         startActivity(modificaProfesores);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }
 
     public void crearPadre(View v){
-        Intent creaPadre = new Intent(MenuPrincipal.this, CreacionPadre.class);
+        Intent creaPadre = new Intent(ActivityMenuPrincipal.this, ActivityCreacionPadre.class);
         startActivity(creaPadre);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }
 
     public void modificarPadre(View v){
-        Intent modificaPadre = new Intent(MenuPrincipal.this, ModificarPadre.class);
+        Intent modificaPadre = new Intent(ActivityMenuPrincipal.this, ActivityModificarPadre.class);
         startActivity(modificaPadre);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }
 
     public void crearAlumno(View v){
-        Intent creaPadre = new Intent(MenuPrincipal.this, CreacionAlumno.class);
+        Intent creaPadre = new Intent(ActivityMenuPrincipal.this, ActivityCreacionAlumno.class);
         startActivity(creaPadre);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }
 
     public void modificarAlumno(View v){
-        Intent modificaPadre = new Intent(MenuPrincipal.this, ModificarAlumno.class);
+        Intent modificaPadre = new Intent(ActivityMenuPrincipal.this, ActivityModificarAlumno.class);
         startActivity(modificaPadre);
         overridePendingTransition(R.transition.left_in, R.transition.left_out);
     }

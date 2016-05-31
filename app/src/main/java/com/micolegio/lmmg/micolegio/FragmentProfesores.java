@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class PadresFragment extends Fragment {
 
-    public PadresFragment() {
+public class FragmentProfesores extends Fragment{
+
+    public FragmentProfesores() {
+
     }
 
     @Override
@@ -22,9 +24,8 @@ public class PadresFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_padres, container, false);
+        return inflater.inflate(R.layout.fragment_profesores, container, false);
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -37,6 +38,6 @@ public class PadresFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onPadresFragmentInteraction(Uri uri);
+        void onProfesoresFragmentInteraction(Uri uri);
     }
 }

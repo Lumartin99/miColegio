@@ -11,49 +11,58 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MenuLogin"
+            android:name=".ActivityMenuLogin"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuPrincipal"
+            android:name=".ActivityMenuPrincipal"
             android:label="Menu Principal"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreacionProfesor"
+            android:name=".ActivityCreacionProfesor"
             android:label="Crear Profesor"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ModificarPofesor"
+            android:name=".ActivityModificarPofesor"
             android:label="Modificar Profesor"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ModificarPadre"
+            android:name=".ActivityModificarPadre"
             android:label="Modificar Padre"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreacionPadre"
+            android:name=".ActivityCreacionPadre"
             android:label="Crear Padre"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreacionAlumno"
+            android:name=".ActivityCreacionAlumno"
             android:label="Crear Alumno"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ModificarAlumno"
+            android:name=".ActivityModificarAlumno"
             android:label="Modificar Alumno"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityProfesores"
+            android:label="Profesores"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityEnviarMensaje"
+            android:label="Enviar Mensaje"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

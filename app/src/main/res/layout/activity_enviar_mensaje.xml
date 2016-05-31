@@ -38,93 +38,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:id="@+id/tNombre" />
+            android:text="Asunto"
+            android:id="@+id/tAsunto" />
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/rounded_corner"
-            android:id="@+id/eNombre" />
+            android:id="@+id/eAsunto" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:id="@+id/tEmail"
-            android:layout_marginTop="10dp" />
+            android:text="Mensaje"
+            android:id="@+id/tMensaje" />
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="282dp"
             android:background="@drawable/rounded_corner"
-            android:id="@+id/eEmail" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telefono"
-            android:id="@+id/tTelefono"
-            android:layout_marginTop="10dp" />
-
-        <EditText
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:id="@+id/eTelefono" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Usuario"
-            android:id="@+id/tUsuario"
-            android:layout_marginTop="10dp" />
-
-        <EditText
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:id="@+id/eUsuario"
-            android:layout_below="@+id/tUsuario"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:id="@+id/tPass1"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
-
-        <EditText
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/ePass1"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Repite contraseña"
-            android:id="@+id/tPass2"
-            android:layout_above="@+id/ePass1"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
-
-        <EditText
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/ePass2"
-            android:layout_below="@+id/tPass1"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/eMensaje" />
 
         <TableLayout
             android:layout_width="fill_parent"
@@ -137,25 +70,20 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Editar"
-                    android:id="@+id/bEditar"
-                    android:onClick="crear"
+                    android:text="Enviar"
+                    android:id="@+id/bEnviar"
+                    android:onClick="enviar"
                     android:layout_gravity="center" />
                 <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Eliminar"
-                    android:id="@+id/bEliminar"
-                    android:onClick="eliminar"
+                    android:text="Cancelar"
+                    android:id="@+id/bCancelar"
+                    android:onClick="cancelar"
                     android:layout_gravity="center" />
             </TableRow>
         </TableLayout>
-
-
-
-
-
 
     </LinearLayout>
 

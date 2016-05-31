@@ -20,6 +20,7 @@ public class Usuario {
     boolean logged;
 
     public Usuario(int id_aux, String username_aux, String nombre_aux, String telefono_aux, String tipo_aux, String regId_aux, String email_aux){
+        idUser = id_aux;
         username = username_aux;
         nombre = nombre_aux;
         telefono = telefono_aux;
@@ -111,7 +112,7 @@ public class Usuario {
 
 
         try {
-        resultado = new Login().execute(vUsername, vPassword).get();
+        resultado = new AsyncLogin().execute(vUsername, vPassword).get();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,6 +137,7 @@ public class Usuario {
                     setRegId(fila.getString("regId"));
                     setTipo(fila.getString("type"));
                     logged=true;
+                    ComunicadorUsuarioLogged.setUsuario(this);
                     return "OK";
 
                 }
@@ -155,7 +157,7 @@ public class Usuario {
         String resultado = "Error";
 
         try {
-            resultado = new Signup().execute(vNombre, vEmail, vTelefono, vUsername, vPassword, vTipo).get();
+            resultado = new AsyncSignup().execute(vNombre, vEmail, vTelefono, vUsername, vPassword, vTipo).get();
         } catch (Exception e) {
             e.printStackTrace();
         }

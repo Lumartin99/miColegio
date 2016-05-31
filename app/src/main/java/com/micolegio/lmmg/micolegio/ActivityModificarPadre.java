@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ModificarPadre extends AppCompatActivity {
+public class ActivityModificarPadre extends AppCompatActivity {
 
     private EditText nombre;
     private EditText email;

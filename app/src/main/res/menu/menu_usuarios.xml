@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/nuevo_usuario"
+        android:title="Nuevo"
+        android:visible="true"/>
+    <item
+        android:id="@+id/ver_usuario"
+        android:title="Ver"
+        android:visible="true"/>
+    <item
+        android:id="@+id/enviar_mensaje"
+        android:title="Mensaje"
+        android:visible="true"/>
+    <item
+        android:id="@+id/modificar_usuario"
+        android:title="Modificar"
+        android:visible="true"/>
+    <item
+        android:id="@+id/borrar_usuario"
+        android:title="Borrar"
+        android:visible="true"/>
+
+</menu>

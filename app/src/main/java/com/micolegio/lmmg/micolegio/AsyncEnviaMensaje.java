@@ -1,49 +1,35 @@
 package com.micolegio.lmmg.micolegio;
 
-/**
- * Created by LuisMaria on 29/03/2016.
- */
 
-import android.net.http.HttpResponseCache;
 import android.os.AsyncTask;
-
-import android.content.Context;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
+public class AsyncEnviaMensaje extends AsyncTask<String, Void, String> {
 
-/**
- * Created by LuisMaria on 28/03/2016.
- */
+    private String idSen;
+    private String idRec;
+    private String asunto;
+    private String message;
 
-public class Signup extends AsyncTask<String, Void, String> {
 
-
-    public Signup() {
-    }
-
-    protected void onPreExecute() {
-
+    public AsyncEnviaMensaje() {
     }
 
     @Override
     protected String doInBackground(String... arg0) {
-        String name = arg0[0];
-        String email = arg0[1];
-        String telefono = arg0[2];
-        String username = arg0[3];
-        String password = arg0[4];
-        String type = arg0[5];
+        idSen = arg0[0];
+        idRec = arg0[1];
+        asunto = arg0[2];
+        message = arg0[3];
 
 
 
@@ -52,16 +38,15 @@ public class Signup extends AsyncTask<String, Void, String> {
         BufferedReader bufferedReader;
         String result;
 
-
         try {
-            data = "&name=" + URLEncoder.encode(name, "UTF-8");
-            data += "&email=" + URLEncoder.encode(email, "UTF-8");
-            data += "&phone=" + URLEncoder.encode(telefono, "UTF-8");
-            data += "&username=" + URLEncoder.encode(username, "UTF-8");
-            data += "&password=" + URLEncoder.encode(password, "UTF-8");
-            data += "&type=" + URLEncoder.encode(type, "UTF-8");
 
-            link = "http://micolegio.no-ip.org/signup.php";
+            data = "&idSen=" + URLEncoder.encode(idSen, "UTF-8");
+            data += "&idRec=" + URLEncoder.encode(idRec, "UTF-8");
+            data += "&asunto=" + URLEncoder.encode(asunto, "UTF-8");
+            data += "&message=" + URLEncoder.encode(message, "UTF-8");
+            data += "&date=" + URLEncoder.encode(getDateTime(), "UTF-8");
+
+            link = "http://micolegio.no-ip.org/enviaMensaje.php";
             URL url = new URL(link);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -77,9 +62,8 @@ public class Signup extends AsyncTask<String, Void, String> {
             result = bufferedReader.readLine();
             bufferedReader.close();
             con.disconnect();
-
-
             return result;
+
         } catch (Exception e) {
             return new String("Exception: " + e.getMessage());
         }
@@ -88,7 +72,12 @@ public class Signup extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+
     }
 
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
 }
-

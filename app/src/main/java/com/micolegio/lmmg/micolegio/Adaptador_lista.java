@@ -1,6 +1,8 @@
 package com.micolegio.lmmg.micolegio;
 
         import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Locale;
 
         import android.content.Context;
         import android.view.LayoutInflater;
@@ -8,20 +10,39 @@ package com.micolegio.lmmg.micolegio;
         import android.view.ViewGroup;
         import android.widget.BaseAdapter;
 
-/** Adaptador de ListView universal, para www.jarroba.com
- * @author Ramon Invarato Menéndez
- */
 public abstract class Adaptador_lista extends BaseAdapter {
 
-    private ArrayList<?> entradas;
+    private List<Usuario> listaUsuarios = null;
+    private ArrayList<Usuario> entradas;
     private int R_layout_IdView;
     private Context contexto;
 
-    public Adaptador_lista(Context contexto, int R_layout_IdView, ArrayList<?> entradas) {
+    public Adaptador_lista(Context contexto, int R_layout_IdView, ArrayList<Usuario> entradas) {
         super();
         this.contexto = contexto;
-        this.entradas = entradas;
+        this.listaUsuarios = entradas;
+        this.entradas = new ArrayList<Usuario>();
+        this.entradas.addAll(listaUsuarios);
         this.R_layout_IdView = R_layout_IdView;
+    }
+
+    public void filtrar (String charText) {
+        charText = charText.toLowerCase();
+        listaUsuarios.clear();
+        if (charText.length() == 0) {
+            listaUsuarios.addAll(entradas);
+        }
+        else
+        {
+            for (Usuario usuario : entradas)
+            {
+                if (usuario.getNombre().toLowerCase(Locale.getDefault()).contains(charText))
+                {
+                    listaUsuarios.add(usuario);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -30,18 +51,19 @@ public abstract class Adaptador_lista extends BaseAdapter {
             LayoutInflater vi = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = vi.inflate(R_layout_IdView, null);
         }
-        onEntrada (entradas.get(posicion), view);
+
+        onEntrada (listaUsuarios.get(posicion), view);
         return view;
     }
 
     @Override
     public int getCount() {
-        return entradas.size();
+        return listaUsuarios.size();
     }
 
     @Override
     public Object getItem(int posicion) {
-        return entradas.get(posicion);
+        return listaUsuarios.get(posicion);
     }
 
     @Override
@@ -49,10 +71,14 @@ public abstract class Adaptador_lista extends BaseAdapter {
         return posicion;
     }
 
-    /** Devuelve cada una de las entradas con cada una de las vistas a la que debe de ser asociada
-     * @param entrada La entrada que será la asociada a la view. La entrada es del tipo del paquete/handler
-     * @param view View particular que contendrá los datos del paquete/handler
-     */
-    public abstract void onEntrada (Object entrada, View view);
+    public void removeItem(int posicion) { listaUsuarios.remove(posicion); entradas.remove(posicion); }
+
+    public void cambiaLista (ArrayList<Usuario> entradas) {
+        this.listaUsuarios = entradas;
+        this.entradas = new ArrayList<Usuario>();
+        this.entradas.addAll(listaUsuarios);
+    }
+
+    public abstract void onEntrada (Usuario entrada, View view);
 
 }

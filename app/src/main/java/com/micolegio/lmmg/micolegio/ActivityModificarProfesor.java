@@ -1,14 +1,19 @@
 package com.micolegio.lmmg.micolegio;
 
-import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreacionPadre extends AppCompatActivity {
+
+
+public class ActivityModificarProfesor extends AppCompatActivity {
+
     private EditText nombre;
     private EditText email;
     private EditText telefono;
@@ -17,12 +22,10 @@ public class CreacionPadre extends AppCompatActivity {
     private EditText pass2;
     private Usuario usuario;
 
-    //TODO Hay que meter el selector de hijo
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creacion_padre);
+        setContentView(R.layout.activity_creacion_profesor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -33,14 +36,21 @@ public class CreacionPadre extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        usuario = ComunicadorUsuario.getUsuario();
 
         nombre = (EditText) findViewById(R.id.eNombre);
+        nombre.setText(usuario.getNombre());
         email = (EditText) findViewById(R.id.eEmail);
+        email.setText(usuario.getEmail());
         telefono = (EditText) findViewById(R.id.eTelefono);
+        telefono.setText(usuario.getTelefono());
         username = (EditText) findViewById(R.id.eUsuario);
+        username.setText(usuario.getUsername());
+        username.setEnabled(false);
         pass1 = (EditText) findViewById(R.id.ePass1);
         pass2 = (EditText) findViewById(R.id.ePass2);
-        usuario = new Usuario();
+        Button b = (Button) findViewById(R.id.bCrear);
+        b.setText("Modificar");
 
     }
 
@@ -61,22 +71,22 @@ public class CreacionPadre extends AppCompatActivity {
     public void crear(View v) {
         String result = "";
 
-        Toast.makeText(this, "Registrando nuevo padre....", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, "Modificando profesor....", Toast.LENGTH_SHORT).show();
         if (pass1.getText().toString().equals(pass2.getText().toString())) {
-
-            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Padre");
+            try {
+                result = new AsyncModProfesor().execute(String.valueOf(usuario.getIdUser()), nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), pass1.getText().toString(), "").get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             if (result.equalsIgnoreCase("OK")) {
-                Toast.makeText(this, "Nuevo padre registrado correctamente", Toast.LENGTH_SHORT).show();
-                onBackPressed();
+                Toast.makeText(this, "Profesor modificado", Toast.LENGTH_SHORT).show();
+                super.onBackPressed();
             } else {
                 Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
+        } else {
             Toast.makeText(this, "Los password no coinciden....", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

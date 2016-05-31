@@ -1,14 +1,15 @@
 package com.micolegio.lmmg.micolegio;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreacionAlumno extends AppCompatActivity {
+public class ActivityModificarAlumno extends AppCompatActivity {
+
     private EditText nombre;
     private EditText email;
     private EditText telefono;
@@ -16,12 +17,10 @@ public class CreacionAlumno extends AppCompatActivity {
     private EditText pass1;
     private EditText pass2;
     private Usuario usuario;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creacion_padre);
+        setContentView(R.layout.activity_modificar_alumno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -33,13 +32,7 @@ public class CreacionAlumno extends AppCompatActivity {
             }
         });
 
-        nombre = (EditText) findViewById(R.id.eNombre);
-        email = (EditText) findViewById(R.id.eEmail);
-        telefono = (EditText) findViewById(R.id.eTelefono);
-        username = (EditText) findViewById(R.id.eUsuario);
-        pass1 = (EditText) findViewById(R.id.ePass1);
-        pass2 = (EditText) findViewById(R.id.ePass2);
-        usuario = new Usuario();
+
 
     }
 
@@ -57,25 +50,4 @@ public class CreacionAlumno extends AppCompatActivity {
     }
 
 
-    public void crear(View v) {
-        String result = "";
-
-        Toast.makeText(this, "Registrando nuevo alumno....", Toast.LENGTH_SHORT).show();
-
-        if (pass1.getText().toString().equals(pass2.getText().toString())) {
-
-            result = usuario.registro(nombre.getText().toString(), email.getText().toString(), telefono.getText().toString(), username.getText().toString(), pass1.getText().toString(), "Alumno");
-
-            if (result.equalsIgnoreCase("OK")) {
-                Toast.makeText(this, "Nuevo alumno registrado correctamente", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            } else {
-                Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(this, "Los password no coinciden....", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 }

@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class AlumnosFragment extends Fragment {
+public class FragmentPadres extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
-
-    public AlumnosFragment() {
+    public FragmentPadres() {
     }
 
     @Override
@@ -24,7 +22,7 @@ public class AlumnosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_alumnos, container, false);
+        return inflater.inflate(R.layout.fragment_padres, container, false);
     }
 
 
@@ -39,6 +37,6 @@ public class AlumnosFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onAlumnosFragmentInteraction(Uri uri);
+        void onPadresFragmentInteraction(Uri uri);
     }
 }
